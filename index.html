@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Voyage Ville Diatta Tourisme</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+    AOS.init();
+    </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    /* .hero-bg est potentiellement inutilisé, la section hero utilise .hero-section */
+    .hero-bg {
+      /* Ancien bleu foncé: rgba(30, 58, 138, 0.6) */
+      /* Nouveau brand-blue: #00518c -> rgba(0, 81, 140, 0.6) */
+      background-image: linear-gradient(rgba(0, 81, 140, 0.6), rgba(0, 81, 140, 0.6)), url('/mnt/data/Screenshot 2025-05-08 at 18.25.29.png');
+      background-size: cover;
+      background-position: center;
+    }
+    .wave {
+      position: relative;
+      bottom: -1px;
+    }
+
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+    body {
+        font-family: 'Poppins', sans-serif;
+    }
+    .hero-section {
+        background-image: url('https://images.unsplash.com/photo-1499678329028-101435549a4e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+        background-size: cover;
+        background-position: center;
+        position: relative;
+    }
+    .hero-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        /* Ancien overlay sombre: rgba(17, 24, 39, 0.5) */
+        /* Nouveau avec brand-blue: rgba(0, 81, 140, 0.5) */
+        background: rgba(0, 81, 140, 0.5); /* Utilisation du bleu de la marque pour l'overlay */
+    }
+    .wave-divider {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 50px;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z' opacity='.25' fill='%23FFFFFF'/%3E%3Cpath d='M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z' opacity='.5' fill='%23FFFFFF'/%3E%3Cpath d='M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z' fill='%23FFFFFF'/%3E%3C/svg%3E");
+        background-size: cover;
+    }
+
+    .service-card {
+        transition: all 0.3s ease;
+    }
+
+    .service-card:hover svg {
+        color: white; /* Reste pertinent si le fond devient brand-blue */
+    }
+    
+  /*   .service-card:hover {
+        /* Ancien bleu: #3b82f6 */
+        /* Nouveau brand-blue: voir tailwind.config */
+        /* Ce style sera appliqué par les classes Tailwind si possible, sinon ajuster ici */
+    /*}
+    
+
+  /*   .adventure-section {
+      /* Ancien gradient: linear-gradient(90deg, #3b82f6 0%, #8b5cf6 100%) */
+      /* background: #00518c; /* Utilisation du brand-blue solide */
+      /* Cette classe n'est pas utilisée, le style est appliqué via Tailwind */
+  /*   }
+   /*  .footer-section {
+      /* background-color: #3b82f6; */ /* Sera géré par Tailwind */
+      /* Cette classe n'est pas utilisée, le style est appliqué via Tailwind */
+   /*  }
+
+    /* Masquer tous les slides et ne montrer que le .active */
+    .slide {
+        display: none;
+    }
+    .slide.active {
+        display: block;
+    }
+
+
+    @keyframes riseUp {
+      0% {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-rise-up {
+      animation: riseUp 5s ease-out forwards;
+
+
+        .bar {
+            transition: 0.3s;
+            transform-origin: center;
+        }
+        .open .bar1 {
+            transform: rotate(45deg) translateY(6px);
+        }
+        .open .bar2 {
+            opacity: 0;
+        }
+        .open .bar3 {
+            transform: rotate(-45deg) translateY(-6px);
+        }
+        #mobile-menu {
+            transition: max-height 0.3s ease-out;
+            overflow: hidden;
+            max-height: 0;
+        }
+        #mobile-menu.open {
+            max-height: 500px; /* or enough to show all content */
+        }
+    }
+  </style>
+</head>
+<body class="font-sans text-gray-800 bg-white">
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-white shadow">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+      
+      <!-- Logo -->
+      <div class="flex items-center space-x-4">
+        <img src="src/images/image.png" alt="Logo" class="h-20 w-auto" />
+      </div>
+  
+      <!-- Hamburger (mobile only) -->
+      <div class="md:hidden">
+        <button id="menu-toggle" class="focus:outline-none">
+          <svg class="w-8 h-8 text-brand-blue" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+  
+      <!-- Navigation (desktop only) -->
+      <nav class="hidden md:flex items-center space-x-6 text-brand-blue font-semibold">
+        <a href="#" class="hover:text-brand-orange transition">Accueil</a>
+        <a href="#apropos" class="hover:text-brand-orange transition">À propos</a>
+        <a href="#services" class="hover:text-brand-orange transition">Services</a>
+        <a href="#contact" class="hover:text-brand-orange transition">Contact</a>
+      </nav>
+  
+      <!-- CTA -->
+      <div class="hidden md:flex items-center space-x-4">
+        <button class="bg-brand-orange hover:bg-brand-orange-dark text-white font-medium py-3 px-6 rounded-full transition duration-300">
+          Contactez-nous
+        </button>
+      </div>
+    </div>
+  
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="md:hidden hidden px-4 pb-4">
+      <nav class="flex flex-col space-y-2 text-brand-blue font-semibold">
+        <a href="#" class="hover:text-brand-orange transition">Accueil</a>
+        <a href="#apropos" class="hover:text-brand-orange transition">À propos</a>
+        <a href="#services" class="hover:text-brand-orange transition">Services</a>
+        <a href="#contact" class="hover:text-brand-orange transition">Contact</a>
+        <button class="mt-2 bg-brand-orange hover:bg-brand-orange-dark text-white font-medium py-2 px-4 rounded-full transition duration-300">
+          Contactez-nous
+        </button>
+      </nav>
+    </div>
+  </header>
+  
+  <script>
+    // Toggle mobile menu
+    document.getElementById("menu-toggle").addEventListener("click", function () {
+      const menu = document.getElementById("mobile-menu");
+      menu.classList.toggle("hidden");
+    });
+  </script>
+  
+
+   <!-- Hero Section -->
+   <section class="hero-section relative h-[600px] flex items-center justify-center text-white">
+        <div class="container mx-auto px-4 relative z-10 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Voyagez en toute sérénité</h1>
+            <p class="text-lg md:text-xl max-w-2xl mx-auto mb-8">
+                Découvrez le monde avec notre expertise. Des voyages personnalisés et des expériences inoubliables vous attendent.
+            </p>
+          <!--  <button class="bg-brand-orange hover:bg-brand-orange-dark text-white font-medium py-3 px-6 rounded-full transition duration-300">
+                Demander un devis
+            </button> 
+           -->
+        </div>
+    </section>
+
+<!-- Services Section  -->
+<section id="services" class="py-16 bg-gray-50">
+  <div data-aos="fade-up" data-aos-duration="1000">
+      <div class="container mx-auto px-4 py-12 max-w-5xl">
+          <div class="text-center mb-16">
+              <h3 class="text-brand-orange font-semibold text-xl mb-3">Nos Services</h3>
+              <h2 class="text-4xl sm:text-5xl font-bold text-brand-blue">
+                  Où Chaque Voyage Est<br>Une <span class="text-brand-orange">Aventure</span> Inoubliable
+              </h2>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+              <!-- Billets d'avions -->
+              <div class="group bg-blue-50 rounded-xl p-6 flex flex-col items-center text-center shadow-lg min-h-[300px]  transition transition-all duration-300 ease-in-out transform hover:-translate-y-1">
+                  <div class="mb-5 p-3 rounded-full">
+                      <i class="fas fa-plane text-4xl text-brand-orange mb-4 transition-colors duration-300"></i>
+                  </div>
+                  <h3 class="text-xl font-bold text-brand-blue mb-2 transition-colors duration-300">Billets d'avion</h3>
+                  <p class="text-gray-600 text-sm leading-relaxed transition-colors duration-300">Réservez vos vols aux meilleurs prix pour toutes destinations mondiales.</p>
+              </div>
+
+              <!-- Tourisme -->
+              <div class="group bg-blue-50 rounded-xl p-6 flex flex-col items-center text-center shadow-lg min-h-[300px]  transition-all duration-300 ease-in-out transform hover:-translate-y-1 ">
+                  <div class="mb-5 p-3 rounded-full">
+                      <i class="fas fa-box text-4xl text-brand-orange mb-4 transition-colors duration-300"></i>
+                  </div>
+                  <h3 class="text-xl font-bold text-brand-blue mb-2  transition-colors duration-300">GP Colis</h3>
+                  <p class="text-gray-600 text-sm leading-relaxed transition-colors duration-300">Envoyez et recevez vos colis en toute sécurité depuis 🇫🇷 vers 🇬🇳 🇸🇳  </p>
+              </div>
+
+              <!-- Omra -->
+              <div class="group bg-blue-50 rounded-xl p-6 flex flex-col items-center text-center shadow-lg min-h-[300px]  transition-all duration-300 ease-in-out transform hover:-translate-y-1 ">
+                   <div class="mb-5 p-3 rounded-full">
+                      <i class="fas fa-car-alt text-4xl text-brand-orange mb-4 transition-colors duration-300"></i>
+                  </div>
+                  <h3 class="text-xl font-bold text-brand-blue mb-2   transition-colors duration-300">Location de Voitures</h3>
+                  <p class="text-gray-600 text-sm leading-relaxed ransition-colors duration-300">Explorez votre destination en toute liberté avec notre large gamme de véhicules.</p>
+                  
+              </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="group bg-blue-50 rounded-xl p-6 flex flex-col items-center text-center shadow-lg min-h-[300px]  transition-all duration-300 ease-in-out transform hover:-translate-y-1">
+                <div class="mb-5 p-3 rounded-full">
+                      <i class="fas fa-id-card text-4xl text-brand-orange mb-4  transition-colors duration-300"></i>
+                  </div>
+                  <h3 class="text-xl font-bold text-brand-blue mb-2  transition-colors duration-300">Assistance Voyage</h3>
+                  <p class="text-gray-600 text-sm leading-relaxed transition-colors duration-300">Facilitez vos démarches administratives pour voyager l'esprit tranquille.</p>
+              </div>
+          
+              <div class="group bg-blue-50 rounded-xl p-6 flex flex-col items-center text-center shadow-lg min-h-[300px]  transition-all duration-300 ease-in-out transform hover:-translate-y-1 ">
+                <div class="mb-5 p-3 rounded-full">
+                  <i class="fas fa-shield-alt text-4xl text-brand-orange mb-4 transition-colors duration-300"></i>
+                </div>
+                  <h3 class="text-xl font-bold text-brand-blue mb-2 transition-colors duration-300">Assurance Voyage</h3>
+                  <p class="text-gray-600 text-sm leading-relaxed  transition-colors duration-300">Protégez-vous contre les imprévus avec nos assurances complètes.</p>
+              </div>
+          
+              <div class="group bg-blue-50 rounded-xl p-6 flex flex-col items-center text-center shadow-lg min-h-[300px]  transition-all duration-300 ease-in-out transform hover:-translate-y-1 ">
+                  <div class="mb-5 p-3 rounded-full">
+                      <i class="fas fa-kaaba text-4xl text-brand-orange mb-4 transition-colors duration-300"></i>
+                  </div>
+                  <h3 class="text-xl font-bold text-brand-blue mb-2  transition-colors duration-300">Omra</h3>
+                  <p class="text-gray-600 text-sm leading-relaxed  transition-colors duration-300">Organisation de voyages spirituels vers les lieux saints avec sérénité.</p>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+
+
+ <section class="py-16 bg-gray-50 text-center">
+    <div data-aos="fade-up" data-aos-duration="1000">
+        <div class="container mx-auto px-4 text-center">
+          <h2 class="text-4xl font-bold text-brand-blue mb-2">Découvrez votre prochaine aventure</h2>
+          <p class="text-gray-500 mb-10">Les meilleurs destinations et types de voyage pour voir les plus extraordinaires aventures au monde</p>
+        
+          <div class="bg-brand-blue rounded-3xl p-10 text-left text-white flex flex-col lg:flex-row justify-between items-center shadow-lg mb-14">
+            <div class="max-w-lg">
+              <h3 class="text-2xl font-bold mb-4">Explorez le monde à votre rythme</h3>
+              <p class="mb-6">Des destinations sur mesure conçues pour vous avec l'influence des tendances actuelles. Découvrez nos collections de voyages de luxe personnalisés.</p>
+              <button class="bg-brand-orange hover:bg-brand-orange-dark text-white font-semibold px-6 py-3 rounded-full transition">Trouvez votre séjour</button>
+            </div>
+        
+            <div class="bg-white text-black rounded-2xl p-6 mt-10 lg:mt-0 lg:ml-8 w-full max-w-md shadow-md">
+              <div class="flex items-start gap-4">
+                <div class="text-brand-blue text-2xl">⚙️</div>
+                <div>
+                  <h4 class="font-bold text-lg text-brand-blue mb-2">Garantie du meilleur prix</h4>
+                  <p class="text-gray-600 mb-4">Nous vous offrons le meilleur rapport qualité-prix sur le marché actuel avec des réductions exclusives.</p>
+                  <button class="border border-brand-blue text-brand-blue px-4 py-2 rounded-full hover:bg-brand-blue hover:text-white transition">En savoir plus</button>
+                </div>
+              </div>
+            </div>
+          </div>
+      
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 px-4 md:px-0">
+            <div class="bg-white rounded-2xl p-6 shadow-md text-center hover:scale-105 transition">
+              <div class="text-brand-orange text-3xl mb-4">💲</div>
+              <h5 class="font-bold text-lg text-brand-blue mb-2">Prix Imbattables</h5>
+              <p class="text-gray-600">Profitez de nos offres et promos exclusives pour économiser lors de vos voyages</p>
+            </div>
+        
+            <div class="bg-white rounded-2xl p-6 shadow-md text-center hover:scale-105 transition">
+              <div class="text-brand-orange text-3xl mb-4">🎧</div>
+              <h5 class="font-bold text-lg text-brand-blue mb-2">Assistance 24/7</h5>
+              <p class="text-gray-600">Notre équipe d'experts est là pour vous à toute heure du jour et de la nuit en cas de problème</p>
+            </div>
+        
+            <div class="bg-white rounded-2xl p-6 shadow-md text-center hover:scale-105 transition" >
+              <div class="text-brand-orange text-3xl mb-4">📅</div>
+              <h5 class="font-bold text-lg text-brand-blue mb-2" >Réservation Rapide</h5>
+              <p class="text-gray-600">Simplifiez le processus des réservations et obtenez vos confirmations en quelques minutes</p>
+            </div>
+          </div>
+      </div>
+    </div>
+    </section>
+
+     <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-brand-blue mb-2">Destinations Populaires</h2>
+            <div class="w-24 h-1 bg-brand-orange mx-auto mb-12"></div>
+            <p class="text-center text-gray-600 max-w-3xl mx-auto mb-12">
+                Explorez nos destinations les plus prisées et laissez-vous inspirer pour votre prochain voyage.
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8" >
+                <div class="bg-white rounded-xl overflow-hidden shadow-md transition-transform duration-300 hover:scale-105 ">
+                    <div class="h-48 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1502602898657-3e91760cbb34?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')"></div>
+                    <div class="p-6">
+                        <h3 class="font-bold text-xl text-brand-blue mb-2">Paris, France</h3>
+                        <p class="text-gray-600 mb-4">La ville de l'amour et des lumières</p>
+                        <div class="flex items-center ">
+                            <div class="flex text-yellow-400"> <!-- Gardons le jaune pour les étoiles pour l'instant -->
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="text-gray-600 ml-2">(4.7)</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl overflow-hidden shadow-md transition-transform duration-300 hover:scale-105">
+                    <div class="h-48 bg-cover bg-center" style="background-image: url('src/images/macca.jpg')"></div>
+
+                    <div class="p-6">
+                        <h3 class="font-bold text-xl text-brand-blue mb-2">La Mecque, Arabie Saoudite</h3>
+                        <p class="text-gray-600 mb-4">Un voyage spirituel inoubliable</p>
+                        <div class="flex items-center">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                            <span class="text-gray-600 ml-2">(5.0)</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl overflow-hidden shadow-md transition-transform duration-300 hover:scale-105">
+                    <div class="h-48 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1537996194471-e657df975ab4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')"></div>
+                    <div class="p-6">
+                        <h3 class="font-bold text-xl text-brand-blue mb-2">Bali, Indonésie</h3>
+                        <p class="text-gray-600 mb-4">L'île des dieux et ses plages paradisiaques</p>
+                        <div class="flex items-center">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="text-gray-600 ml-2">(4.8)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <button class="bg-brand-blue hover:bg-brand-blue-dark text-white font-medium py-3 px-8 rounded-full transition duration-300">
+                    Explorer toutes les destinations
+                </button>
+            </div>
+        </div>
+    </section>
+
+  <section id="location" class="py-16 bg-white">
+    <div data-aos="fade-up" data-aos-duration="1000">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold text-brand-blue mb-2">Location de voitures</h2>
+      <div class="w-20 h-1 bg-brand-orange mx-auto mb-6"></div>
+      <p class="text-gray-500 mb-10">Flexibilité pour explorer à votre rythme grâce à notre service de location de véhicules modernes et fiables.</p>
+      <div class="grid gap-6 grid-cols-1 md:grid-cols-3">
+        <div class="bg-gray-50 p-6 rounded-xl shadow hover:scale-105 transition">
+          <i class="fas fa-car text-3xl text-brand-orange mb-4"></i>
+          <h3 class="font-semibold text-lg text-brand-blue mb-2">Voitures économiques</h3>
+          <p class="text-gray-500">Idéales pour les petits budgets et les trajets urbains.</p>
+        </div>
+        <div class="bg-gray-50 p-6 rounded-xl shadow hover:scale-105 transition">
+          <i class="fas fa-car-side text-3xl text-brand-orange mb-4"></i>
+          <h3 class="font-semibold text-lg text-brand-blue mb-2">SUV & Familiales</h3>
+          <p class="text-gray-500">Parfaites pour voyager confortablement en famille.</p>
+        </div>
+        <div class="bg-gray-50 p-6 rounded-xl shadow hover:scale-105 transition">
+          <i class="fas fa-car-alt text-3xl text-brand-orange mb-4"></i>
+          <h3 class="font-semibold text-lg text-brand-blue mb-2">Premium & Luxe</h3>
+          <p class="text-gray-500">Faites-vous plaisir avec nos véhicules haut de gamme.</p>
+        </div>
+      </div>
+    </div>
+    </div>
+
+<!-- Location de Voitures Section (Fusionnée et Détaillée) -->
+<div id="location" class="py-16 bg-gray-50">
+    <div data-aos="fade-up" data-aos-duration="1000">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl font-bold text-brand-blue mb-2">Notre Flotte de Véhicules en Location</h2>
+            <div class="w-20 h-1 bg-brand-orange mx-auto mb-6"></div>
+            <p class="text-gray-600 max-w-2xl mx-auto">
+        </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <!-- BMW X6 2015 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden group">
+                    <div class="relative h-56">
+                        <img src="src/images/bmw-x6.jpg" alt="BMW X6 2015" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                        <span class="absolute top-4 right-4 bg-brand-orange text-white text-xs font-semibold px-3 py-1 rounded-full shadow">SUV de Luxe</span>
+                    </div>
+                    <div class="p-6 text-left">
+                        <h3 class="text-xl font-semibold text-brand-blue mb-1">BMW X6 <span class="text-sm text-gray-500">2015</span></h3>
+                        <p class="text-gray-600 text-sm mb-4">Performance et élégance allemandes pour une expérience de conduite inégalée.</p>
+                        <div class="flex items-center justify-between text-sm text-gray-700 mb-4">
+                            <div class="flex items-center gap-2" title="Passagers"><i class="fas fa-users text-brand-blue"></i> 5</div>
+                            <div class="flex items-center gap-2" title="Bagages"><i class="fas fa-suitcase-rolling text-brand-blue"></i> 3-4</div>
+                            <div class="flex items-center gap-2" title="Transmission"><i class="fas fa-cogs text-brand-blue"></i> Auto</div>
+                        </div>
+                        <button class="w-full bg-brand-blue hover:bg-brand-blue-dark text-white font-semibold px-4 py-2 rounded-lg transition-colors duration-300">
+                            Réserver ce véhicule
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Ford Edge 2015 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden group">
+                    <div class="relative h-56">
+                        <img src="src/images/2018_ford_Edge.jpg" alt="Ford Edge 2015" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                        <span class="absolute top-4 right-4 bg-brand-orange text-white text-xs font-semibold px-3 py-1 rounded-full shadow">SUV Spacieux</span>
+                    </div>
+                    <div class="p-6 text-left">
+                        <h3 class="text-xl font-semibold text-brand-blue mb-1">Ford Edge <span class="text-sm text-gray-500">2015</span></h3>
+                        <p class="text-gray-600 text-sm mb-4">Confortable et polyvalent, idéal pour les familles et les longs trajets.</p>
+                        <div class="flex items-center justify-between text-sm text-gray-700 mb-4">
+                            <div class="flex items-center gap-2" title="Passagers"><i class="fas fa-users text-brand-blue"></i> 5</div>
+                            <div class="flex items-center gap-2" title="Bagages"><i class="fas fa-suitcase-rolling text-brand-blue"></i> 4-5</div>
+                            <div class="flex items-center gap-2" title="Transmission"><i class="fas fa-cogs text-brand-blue"></i> Auto</div>
+                        </div>
+                        <button class="w-full bg-brand-blue hover:bg-brand-blue-dark text-white font-semibold px-4 py-2 rounded-lg transition-colors duration-300">
+                            Réserver ce véhicule
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Range Rover Velar 2018 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden group">
+                    <div class="relative h-56">
+                        <img src="src/images/2017_Land_Rover_Range_Rover_Velar.jpg" alt="Range Rover Velar 2018" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                        <span class="absolute top-4 right-4 bg-brand-orange text-white text-xs font-semibold px-3 py-1 rounded-full shadow">Prestige & Aventure</span>
+                    </div>
+                    <div class="p-6 text-left">
+                        <h3 class="text-xl font-semibold text-brand-blue mb-1">Range Rover Velar <span class="text-sm text-gray-500">2018</span></h3>
+                        <p class="text-gray-600 text-sm mb-4">Luxe britannique, design avant-gardiste et capacités tout-terrain.</p>
+                        <div class="flex items-center justify-between text-sm text-gray-700 mb-4">
+                            <div class="flex items-center gap-2" title="Passagers"><i class="fas fa-users text-brand-blue"></i> 5</div>
+                            <div class="flex items-center gap-2" title="Bagages"><i class="fas fa-suitcase-rolling text-brand-blue"></i> 3-4</div>
+                            <div class="flex items-center gap-2" title="Transmission"><i class="fas fa-cogs text-brand-blue"></i> Auto</div>
+                        </div>
+                        <button class="w-full bg-brand-blue hover:bg-brand-blue-dark text-white font-semibold px-4 py-2 rounded-lg transition-colors duration-300">
+                            Réserver ce véhicule
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Mazda CX-5 2016 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden group">
+                    <div class="relative h-56">
+                        <img src="src/images/MAZDA-cx.jpg" alt="Mazda CX-5 2016" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                        <span class="absolute top-4 right-4 bg-brand-orange text-white text-xs font-semibold px-3 py-1 rounded-full shadow">Dynamique & Fiable</span>
+                    </div>
+                    <div class="p-6 text-left">
+                        <h3 class="text-xl font-semibold text-brand-blue mb-1">Mazda CX-5 <span class="text-sm text-gray-500">2016</span></h3>
+                        <p class="text-gray-600 text-sm mb-4">Plaisir de conduite et efficacité, un excellent choix pour toutes routes.</p>
+                        <div class="flex items-center justify-between text-sm text-gray-700 mb-4">
+                            <div class="flex items-center gap-2" title="Passagers"><i class="fas fa-users text-brand-blue"></i> 5</div>
+                            <div class="flex items-center gap-2" title="Bagages"><i class="fas fa-suitcase-rolling text-brand-blue"></i> 3</div>
+                            <div class="flex items-center gap-2" title="Transmission"><i class="fas fa-cogs text-brand-blue"></i> Auto/Manuelle</div>
+                        </div>
+                        <button class="w-full bg-brand-blue hover:bg-brand-blue-dark text-white font-semibold px-4 py-2 rounded-lg transition-colors duration-300">
+                            Réserver ce véhicule
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Jeep Cherokee 2016 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden group">
+                    <div class="relative h-56">
+                        <img src="src/images/jepp.jpg" alt="Jeep Cherokee 2016" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                        <span class="absolute top-4 right-4 bg-brand-orange text-white text-xs font-semibold px-3 py-1 rounded-full shadow">Aventure Robuste</span>
+                    </div>
+                    <div class="p-6 text-left">
+                        <h3 class="text-xl font-semibold text-brand-blue mb-1">Jeep Cherokee <span class="text-sm text-gray-500">2016</span></h3>
+                        <p class="text-gray-600 text-sm mb-4">Prêt pour l'aventure avec des capacités tout-terrain et un design audacieux.</p>
+                        <div class="flex items-center justify-between text-sm text-gray-700 mb-4">
+                            <div class="flex items-center gap-2" title="Passagers"><i class="fas fa-users text-brand-blue"></i> 5</div>
+                            <div class="flex items-center gap-2" title="Bagages"><i class="fas fa-suitcase-rolling text-brand-blue"></i> 3-4</div>
+                            <div class="flex items-center gap-2" title="Transmission"><i class="fas fa-cogs text-brand-blue"></i> Auto</div>
+                        </div>
+                        <button class="w-full bg-brand-blue hover:bg-brand-blue-dark text-white font-semibold px-4 py-2 rounded-lg transition-colors duration-300">
+                            Réserver ce véhicule
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Potentiellement une carte "Voir plus" ou autre type de véhicule -->
+                <div class="bg-gray-100 rounded-2xl shadow-lg overflow-hidden flex flex-col items-center justify-center p-6 text-center group hover:bg-brand-orange transition-colors duration-300 min-h-[400px] md:min-h-0">
+                     <i class="fas fa-car-side text-6xl text-brand-orange mb-6 group-hover:text-white transition-colors duration-300"></i>
+                    <h3 class="text-xl font-semibold text-brand-blue mb-2 group-hover:text-white transition-colors duration-300">Besoin d'un autre modèle ?</h3>
+                    <p class="text-gray-600 text-sm mb-4 group-hover:text-white transition-colors duration-300">Nous avons une large gamme de véhicules pour tous vos besoins.</p>
+                    <button class="mt-auto bg-brand-blue group-hover:bg-white group-hover:text-brand-blue text-white font-semibold px-6 py-3 rounded-lg transition-colors duration-300">
+                        Voir toutes nos voitures
+                    </button>
+                </div>
+
+
+            </div> <!-- Fin du grid -->
+
+            <!-- Si vous aviez un bouton "Voir toutes les options" au niveau de la section, il peut rester ou être intégré comme la carte ci-dessus -->
+            <div class="mt-12 text-center">
+              <button class="bg-brand-orange hover:bg-brand-orange-dark text-white text-base font-semibold px-8 py-3 rounded-full shadow-lg transition-all">
+                Demander un devis personnalisé
+              </button>
+            </div>
+
+        </div> <!-- Fin de AOS wrapper -->
+    </div> <!-- Fin du container -->
+</div>
+<div>
+</section>
+
+<!-- Section GP Colis -->
+<section id="gp-colis" class="py-16 bg-gray-50">
+    <div data-aos="fade-up" data-aos-duration="1000">
+    <div class="container mx-auto px-4">
+      <!-- Header -->
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-brand-blue mb-2">GP Colis</h2>
+        <div class="w-20 h-1 bg-brand-orange mx-auto mb-4"></div>
+        <p class="text-gray-600 max-w-2xl mx-auto">
+          Envoyez et recevez vos colis en toute sérénité entre la France et l'Afrique de l'Ouest, avec un service rapide et fiable.
+        </p>
+      </div>
+  
+      <!-- Éléments clés -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        <!-- Point de dépôt -->
+        <div class="bg-white rounded-2xl shadow-lg p-6 text-center transition-transform duration-300 hover:scale-105">
+            <i class="fas fa-solid fa-location-dot text-4xl text-brand-orange mb-4"></i>
+
+          <h3 class="text-xl font-semibold text-brand-blue mb-2">Point de dépôt</h3>
+          <p class="text-gray-600 text-sm">
+            Déposez vos colis dans nos agences ou points relais à Paris, Lyon et Marseille.
+          </p>
+        </div>
+        <!-- Point de récupération -->
+        <div class="bg-white rounded-2xl shadow-lg p-6 text-center transition-transform duration-300 hover:scale-105">
+            <i class="fas fa-solid fa-location-pin text-4xl text-brand-orange mb-4"></i>
+        
+          <h3 class="text-xl font-semibold text-brand-blue mb-2">Point de récupération</h3>
+          <p class="text-gray-600 text-sm">
+            Vos destinataires récupèrent leurs colis dans nos points relais partenaires au Sénégal et en Guinée.
+          </p>
+        </div>
+        <!-- Fréquence d'envoi -->
+        <div class="bg-white rounded-2xl shadow-lg p-6 text-center transition-transform duration-300 hover:scale-105">
+           <i class="fas fa-solid fa-clock text-4xl text-brand-orange mb-4"></i>
+     
+          <h3 class="text-xl font-semibold text-brand-blue mb-2">Fréquence d’envoi</h3>
+          <p class="text-gray-600 text-sm">
+            Ramassage et expéditions tous les mardis et vendredis : planifiez votre envoi simplement chaque semaine.
+          </p>
+        </div>
+      </div>
+  
+      <!-- Bouton centré -->
+      <div class="text-center">
+        <button class="bg-brand-orange hover:bg-brand-orange-dark text-white font-semibold px-8 py-3 rounded-full transition">
+          Planifier un envoi
+        </button>
+      </div>
+    </div>
+    </div>
+  </section>
+  
+  
+  
+<section class="py-16 bg-gray-50 text-center">
+    <div data-aos="fade-up" data-aos-duration="1000">
+  <h2 class="text-3xl font-bold text-brand-blue mb-2">Ce que nos clients disent</h2>
+  <p class="text-gray-600 mb-10">Découvrez les expériences de voyage mémorables de nos clients à travers le monde.</p>
+
+  <div class="grid gap-6 md:grid-cols-3 max-w-6xl mx-auto px-4">
+    <div class="bg-white rounded-xl shadow-md p-6 text-left">
+      <div class="flex items-center gap-3 mb-2">
+        <i class="fas fa-user text-brand-blue"></i>
+        <div>
+          <p class="font-semibold text-brand-blue">Sophie Martin</p>
+          <p class="text-sm text-gray-500">Paris, France</p>
+        </div>
+      </div>
+      <div class="flex text-yellow-400 mb-2"> <!-- Étoiles jaunes -->
+        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+      </div>
+      <p class="italic text-gray-700">"Un service impeccable ! Notre voyage à Bali a été parfaitement organisé. Merci pour cette merveilleuse expérience et votre professionnalisme."</p>
+    </div>
+
+    <div class="bg-white rounded-xl shadow-md p-6 text-left">
+      <div class="flex items-center gap-3 mb-2">
+        <i class="fas fa-user text-brand-blue"></i>
+        <div>
+          <p class="font-semibold text-brand-blue">Ahmed Benali</p>
+          <p class="text-sm text-gray-500">Casablanca, Maroc</p>
+        </div>
+      </div>
+      <div class="flex text-yellow-400 mb-2">
+        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+      </div>
+      <p class="italic text-gray-700">"Mon voyage pour la Omra a été une expérience spirituelle exceptionnelle grâce à l'organisation parfaite de VoyageExpress. Je recommande vivement !"</p>
+    </div>
+
+    <div class="bg-white rounded-xl shadow-md p-6 text-left">
+      <div class="flex items-center gap-3 mb-2">
+         <i class="fas fa-user text-brand-blue"></i>
+        <div>
+          <p class="font-semibold text-brand-blue">Marie Dupont</p>
+          <p class="text-sm text-gray-500">Lyon, France</p>
+        </div>
+      </div>
+      <div class="flex text-yellow-400 mb-2">
+        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+      </div>
+      <p class="italic text-gray-700">"L'assistance pour l'obtention du visa a été très efficace et m'a fait gagner beaucoup de temps. Personnel amical et très professionnel."</p>
+    </div>
+  </div>
+</div>
+</section>
+
+
+
+<!-- À propos de nous -->
+<section id="apropos" class="py-20 bg-white">
+    <div class="container mx-auto px-6 max-w-6xl">
+      <div data-aos="fade-up" data-aos-duration="1000" class="text-center mb-12">
+        <h3 class="text-brand-orange font-semibold text-xl mb-3">À propos de nous</h3>
+        <h2 class="text-4xl sm:text-5xl font-bold text-brand-blue">Qui sommes-nous ?</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-10 items-center mb-16">
+        <div>
+          <p class="text-gray-700 text-lg leading-relaxed mb-6 text-justify">
+            <strong>Voyage Ville Diatta Tourisme</strong> est une agence spécialisée dans l’organisation de voyages sur mesure,
+            l’assistance administrative, la réservation de billets d’avion, la location de véhicules et l’envoi de colis.
+            Basée à Paris, nous accompagnons nos clients avec professionnalisme et passion vers leurs destinations préférées.
+          </p>
+          <p class="text-gray-700 text-lg leading-relaxed text-justify">
+            Notre mission est de rendre chaque déplacement fluide, sûr et inoubliable. Nous mettons l’humain au cœur de notre service,
+            en proposant un accompagnement personnalisé, des tarifs compétitifs et une expertise reconnue dans le domaine du tourisme
+            et de la mobilité internationale.
+          </p>
+        </div>
+        <div>
+          <img src="src/images/IMG_4503.JPG" alt="Équipe Voyage Ville Diatta" class="rounded-xl shadow-lg">
+        </div>
+      </div>
+  
+     <!-- Pourquoi nous choisir -->
+    <div data-aos="fade" data-aos-duration="10000" class="text-center mb-10">
+        <h3 class="text-3xl font-bold text-brand-blue mb-6">Pourquoi nous choisir ?</h3>
+    </div>
+    <div class="grid md:grid-cols-3 gap-8 text-center">
+        <div class="group bg-white p-6 rounded-2xl shadow-md transition-colors duration-300 hover:bg-brand-orange">
+        <h4 class="text-xl font-semibold text-brand-orange mb-2 transition-colors duration-300 group-hover:text-white">
+            Expérience & Expertise
+        </h4>
+        <p class="text-gray-600 group-hover:text-white transition-colors duration-300">
+            Plus de 10 ans d’expérience dans le secteur du voyage et un accompagnement personnalisé pour chaque client.
+        </p>
+        </div>
+        <div class="group bg-white p-6 rounded-2xl shadow-md transition-colors duration-300 hover:bg-brand-orange">
+        <h4 class="text-xl font-semibold text-brand-orange mb-2 transition-colors duration-300 group-hover:text-white">
+            Disponibilité & Réactivité
+        </h4>
+        <p class="text-gray-600 group-hover:text-white transition-colors duration-300">
+            Une équipe à votre écoute 7j/7 pour répondre rapidement à vos besoins et vous guider.
+        </p>
+        </div>
+        <div class="group bg-white p-6 rounded-2xl shadow-md transition-colors duration-300 hover:bg-brand-orange">
+        <h4 class="text-xl font-semibold text-brand-orange mb-2 transition-colors duration-300 group-hover:text-white">
+            Qualité & Transparence
+        </h4>
+        <p class="text-gray-600 group-hover:text-white transition-colors duration-300">
+            Des services fiables, des prix justes et une relation de confiance avec nos clients.
+        </p>
+        </div>
+    </div>
+  </section>
+
+<section id="contact" class="py-16 bg-gray-100">
+    <div class="container mx-auto px-0 text-center">
+      <h2 class="text-3xl font-bold text-brand-blue mb-2">Contactez-nous</h2>
+      <div class="w-20 h-1 bg-brand-orange mx-auto mb-6"></div>
+    </div>
+</section>
+
+<section class="bg-gray-50 py-16 px-8"> <!-- Changé bg-blue-50 en bg-gray-50 pour contraste -->
+    <div data-aos="fade-up" data-aos-duration="1000">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-10">
+    <div>
+      <h2 class="text-2xl font-bold text-brand-blue mb-4">Contactez-nous</h2>
+      <p class="text-gray-600 mb-6">Vous avez des questions ou besoin d'informations ? Notre équipe est à votre disposition pour vous aider à planifier votre prochain voyage.</p>
+      <div class="space-y-4 text-gray-700">
+        <div class="flex items-start gap-3">
+          <i class="fas fa-map-marker-alt text-brand-orange mt-1"></i>
+          <div>
+            <strong>Notre adresse</strong><br>
+            123 Avenue des Voyages, 75001 Paris
+          </div>
+        </div>
+        <div class="flex items-start gap-3">
+          <i class="fas fa-phone-alt text-brand-orange mt-1"></i>
+          <div>
+            <strong>Téléphone</strong><br>
+            +33 1 23 45 67 89
+          </div>
+        </div>
+        <div class="flex items-start gap-3">
+          <i class="fas fa-envelope text-brand-orange mt-1"></i>
+          <div>
+            <strong>Email</strong><br>
+            contact@voyageexpress.com
+          </div>
+        </div>
+      </div>
+      <div class="flex gap-4 mt-6 text-brand-blue text-xl"> <!-- Changé text-indigo-700 en text-brand-blue -->
+        <i class="fab fa-facebook-square hover:text-brand-orange transition"></i>
+        <i class="fab fa-tiktok hover:text-brand-orange transition"></i>
+        <i class="fab fa-instagram hover:text-brand-orange transition"></i>
+       
+      </div>
+    </div>
+
+    <form class="bg-white rounded-xl shadow-md p-8 space-y-4">
+      <h3 class="text-xl font-semibold text-brand-blue mb-2">Envoyez-nous un message</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <input type="text" placeholder="Votre nom" class="border rounded-md px-4 py-2 w-full focus:ring-brand-orange focus:border-brand-orange">
+        <input type="text" placeholder="Votre prénom" class="border rounded-md px-4 py-2 w-full focus:ring-brand-orange focus:border-brand-orange">
+      </div>
+      <input type="email" placeholder="Votre email" class="border rounded-md px-4 py-2 w-full focus:ring-brand-orange focus:border-brand-orange">
+      <input type="tel" placeholder="Votre numéro de téléphone" class="border rounded-md px-4 py-2 w-full focus:ring-brand-orange focus:border-brand-orange">
+      <textarea placeholder="Votre message" rows="4" class="border rounded-md px-4 py-2 w-full focus:ring-brand-orange focus:border-brand-orange"></textarea>
+      <button type="submit" class="bg-brand-blue hover:bg-brand-orange text-white font-semibold px-6 py-2 rounded-full transition">Envoyer</button>
+    </form>
+  </div>
+</div>
+</section>
+
+<!-- <footer class="bg-brand-blue text-white pt-12 pb-6"> Remplacé style en ligne par classe Tailwind -->
+    <footer class="text-white pt-12 pb-6" style="background-color: #0057A0 ;">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-8">
+          <div class="mb-6 md:mb-0">
+              <img src="src/images/imagep.png" alt="Logo VOYAGE VILLE DIATTA TOURISME" class="mb-5 w-40 h-auto bg-white p-2 rounded-full shadow-md"/>
+              <div class="flex gap-4 text-xl">
+                  <a href="#" aria-label="Facebook" class="hover:text-brand-orange transition"><i class="fab  "></i></a>
+                  <a href="#" aria-label="Facebook" class="hover:text-brand-orange transition"><i class="fab "></i></a>
+                  <a href="#" aria-label="Facebook" class="hover:text-brand-orange transition"><i class="fab fa-facebook"></i></a>
+                  <a href="#" aria-label="TikTok" class="hover:text-brand-orange transition"><i class="fab fa-tiktok"></i></a>
+                  <a href="#" aria-label="Instagram" class="hover:text-brand-orange transition"><i class="fab fa-instagram"></i></a>
+              </div>
+          </div>
+          <div>
+            <h4 class="text-brand-orange font-bold mb-4">Services</h4>
+            <ul class="space-y-2 text-sm">
+              <li><a href="#services" class="hover:text-brand-orange transition">Billets d'avion</a></li>
+              <li><a href="#services" class="hover:text-brand-orange transition">GP Colis</a></li>
+              <li><a href="#location" class="hover:text-brand-orange transition">Location de Voitures</a></li>
+              <li><a href="#services" class="hover:text-brand-orange transition">Assistance Visa</a></li>
+              <li><a href="#services" class="hover:text-brand-orange transition">Assurance Voyage</a></li>
+              <li><a href="#services" class="hover:text-brand-orange transition">Omra</a></li>
+              
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-brand-orange font-bold mb-4">Destinations</h4>
+            <ul class="space-y-2 text-sm">
+              <li><a href="#" class="hover:text-brand-orange transition">Europe</a></li>
+              <li><a href="#" class="hover:text-brand-orange transition">Asie</a></li>
+              <li><a href="#" class="hover:text-brand-orange transition">Afrique</a></li>
+              <li><a href="#" class="hover:text-brand-orange transition">Amérique du Nord</a></li>
+              <li><a href="#" class="hover:text-brand-orange transition">Amérique du Sud</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-brand-orange font-bold mb-4">Contact</h4>
+            <ul class="space-y-4 text-sm">
+              <li class="flex items-start gap-2">
+                <i class="fas fa-map-marker-alt text-brand-orange mt-1"></i>
+                <span>123 Avenue des Voyages, 75001 Paris</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fas fa-phone-alt text-brand-orange mt-1"></i>
+                <span>+33 1 23 45 67 89</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fas fa-envelope text-brand-orange mt-1"></i>
+                <span>info@voyageexpress.com</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="border-t border-white/30 mt-12 pt-6 text-center"> <!-- Bordure plus subtile sur fond bleu -->
+          <p class="text-xs text-white">
+            © <span id="currentYear"></span> VOYAGE VILLE DIATTA TOURISME. Tous droits réservés.
+          </p>
+        </div>
+      </footer>
+  
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+<script>
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+</script>
+<script>
+  tailwind.config = {
+      theme: {
+          extend: {
+              colors: {
+                  // Couleurs de la marque basées sur le logo
+                  'brand-orange': '#f97315',
+                  'brand-orange-dark': '#e08517', // Version plus foncée pour hover
+                  'brand-blue': '#1d40af',
+                  'brand-blue-dark': '#0057A0', // Version plus foncée pour hover
+                  'light-blue':'3c82f6',
+
+                  // Couleurs existantes (à évaluer si elles sont toujours nécessaires)
+                  'light-blue': '#f0f6fa', // Peut-être renommer en brand-blue-lightest
+                  // 'main-blue': '#005288', // Remplacé par brand-blue
+                  // 'dark-blue': '#004373', // Remplacé par brand-blue-dark
+                  // 'main-orange': '#FF9C24', // Remplacé par brand-orange
+                  // 'light-orange': '#FFE5C2',// Peut-être renommer en brand-orange-lightest
+                  // 'dark-orange': '#E68A17' // Remplacé par brand-orange-dark
+              },
+              fontFamily: { // Ajout de la police Poppins ici pour la centralisation
+                sans: ['Poppins', 'sans-serif'],
+              },
+              transitionProperty: {
+                  'background': 'background-color',
+              },
+              transitionDuration: {
+                  'slow': '300ms',
+              }
+          }
+      }
+  }
+
+  // Le script pour générer les cards dynamiquement et le slider ne sont pas pleinement
+  // fonctionnels avec le HTML actuel. Je les commente pour l'instant.
+  /*
+  document.querySelectorAll('[data-icon][data-title]').forEach(el => {
+            const tpl = document.getElementById('service-card-template').content.cloneNode(true);
+            const svgContainer = tpl.querySelector('div.mb-12');
+            const titleEl = tpl.querySelector('h3');
+            svgContainer.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="${el.dataset.icon}"/>
+            </svg>`;
+            titleEl.textContent = el.dataset.title;
+            el.replaceWith(tpl);
+        });
+
+        const slides = document.querySelectorAll('.slide');
+        const indicators = document.querySelectorAll('.indicator');
+        let current = 1, total = slides.length;
+
+        function showSlide(n) {
+            if (slides.length === 0) return; // S'il n'y a pas de slides
+            slides.forEach(s => s.classList.remove('active'));
+            indicators.forEach(i => i.classList.replace('bg-green-500','bg-gray-200')); // Attention, couleur à adapter
+            slides[n-1].classList.add('active');
+            indicators[n-1].classList.replace('bg-gray-200','bg-green-500'); // Attention, couleur à adapter
+            current = n;
+        }
+
+        // Rotation auto
+        if (slides.length > 0) { // Lancer l'intervalle seulement si des slides existent
+            setInterval(() => {
+                showSlide(current % total + 1);
+            }, 5000);
+            showSlide(1); // Afficher le premier slide au chargement
+        }
+  */
+</script>
+</body>
+</html>
