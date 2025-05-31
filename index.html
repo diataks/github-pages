@@ -205,9 +205,9 @@
     </section>
 
 <!-- Services Section  -->
-<section id="services" class="py-16 bg-gray-50">
+<section class="py-16 bg-gray-50">
   <div data-aos="fade-up" data-aos-duration="1000">
-      <div class="container mx-auto px-4 py-12 max-w-5xl">
+      <div class="container mx-auto px-4 py-12 max-w-5xl"  id="services">
           <div class="text-center mb-16">
               <h3 class="text-brand-orange font-semibold text-xl mb-3">Nos Services</h3>
               <h2 class="text-4xl sm:text-5xl font-bold text-brand-blue">
@@ -659,10 +659,13 @@
 <!-- À propos de nous -->
 <section id="apropos" class="py-20 bg-white">
     <div class="container mx-auto px-6 max-w-6xl">
+      <!-- Introduction -->
       <div data-aos="fade-up" data-aos-duration="1000" class="text-center mb-12">
         <h3 class="text-brand-orange font-semibold text-xl mb-3">À propos de nous</h3>
         <h2 class="text-4xl sm:text-5xl font-bold text-brand-blue">Qui sommes-nous ?</h2>
       </div>
+  
+      <!-- Présentation générale -->
       <div class="grid md:grid-cols-2 gap-10 items-center mb-16">
         <div>
           <p class="text-gray-700 text-lg leading-relaxed mb-6 text-justify">
@@ -681,37 +684,69 @@
         </div>
       </div>
   
-     <!-- Pourquoi nous choisir -->
-    <div data-aos="fade" data-aos-duration="10000" class="text-center mb-10">
-        <h3 class="text-3xl font-bold text-brand-blue mb-6">Pourquoi nous choisir ?</h3>
+      <!-- Présentation de l'équipe -->
+<div class="text-center mb-12">
+    <h3 class="text-3xl font-bold text-brand-blue mb-2">Notre Équipe</h3>
+    <p class="text-gray-600 max-w-2xl mx-auto">
+      Une équipe dévouée pour vous accompagner à chaque étape de votre voyage.
+    </p>
+  </div>
+  
+  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-10 mb-20">
+    <!-- Membre 1 -->
+    <div class="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-shadow duration-300 text-center group">
+      <img src="src/images/equipe/directeur.JPG" alt="Directeur Général"
+        class="w-32 h-32 mx-auto rounded-full object-cover border-4 border-brand-orange mb-4 transition-transform duration-300 group-hover:scale-105">
+      <h4 class="text-xl font-semibold text-brand-blue">Mamadou Diatta</h4>
+      <p class="text-gray-500">Directeur Général</p>
     </div>
-    <div class="grid md:grid-cols-3 gap-8 text-center">
+  
+    <!-- Membre 2 -->
+    <div class="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-shadow duration-300 text-center group">
+      <img src="src/images/equipe/comptoir.JPG" alt="Agent Comptoir"
+        class="w-32 h-32 mx-auto rounded-full object-cover border-4 border-brand-orange mb-4 transition-transform duration-300 group-hover:scale-105">
+      <h4 class="text-xl font-semibold text-brand-blue">Aminata Sow</h4>
+      <p class="text-gray-500">Agent Comptoir</p>
+    </div>
+  
+    <!-- Membre 3 -->
+    <div class="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-shadow duration-300 text-center group">
+      <img src="src/images/equipe/commercial.JPG    " alt="Agent Marketing"
+        class="w-32 h-32 mx-auto rounded-full object-cover border-4 border-brand-orange mb-4 transition-transform duration-300 group-hover:scale-105">
+      <h4 class="text-xl font-semibold text-brand-blue">Cheikh Ndiaye</h4>
+      <p class="text-gray-500">Agent Marketing</p>
+    </div>
+  </div>
+  
+      
+  
+      <!-- Pourquoi nous choisir -->
+      <div data-aos="fade" data-aos-duration="10000" class="text-center mb-10">
+        <h3 class="text-3xl font-bold text-brand-blue mb-6">Pourquoi nous choisir ?</h3>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8 text-center">
         <div class="group bg-white p-6 rounded-2xl shadow-md transition-colors duration-300 hover:bg-brand-orange">
-        <h4 class="text-xl font-semibold text-brand-orange mb-2 transition-colors duration-300 group-hover:text-white">
-            Expérience & Expertise
-        </h4>
-        <p class="text-gray-600 group-hover:text-white transition-colors duration-300">
+          <h4 class="text-xl font-semibold text-brand-orange mb-2 group-hover:text-white transition-colors">Expérience & Expertise</h4>
+          <p class="text-gray-600 group-hover:text-white transition-colors">
             Plus de 10 ans d’expérience dans le secteur du voyage et un accompagnement personnalisé pour chaque client.
-        </p>
+          </p>
         </div>
         <div class="group bg-white p-6 rounded-2xl shadow-md transition-colors duration-300 hover:bg-brand-orange">
-        <h4 class="text-xl font-semibold text-brand-orange mb-2 transition-colors duration-300 group-hover:text-white">
-            Disponibilité & Réactivité
-        </h4>
-        <p class="text-gray-600 group-hover:text-white transition-colors duration-300">
+          <h4 class="text-xl font-semibold text-brand-orange mb-2 group-hover:text-white transition-colors">Disponibilité & Réactivité</h4>
+          <p class="text-gray-600 group-hover:text-white transition-colors">
             Une équipe à votre écoute 7j/7 pour répondre rapidement à vos besoins et vous guider.
-        </p>
+          </p>
         </div>
         <div class="group bg-white p-6 rounded-2xl shadow-md transition-colors duration-300 hover:bg-brand-orange">
-        <h4 class="text-xl font-semibold text-brand-orange mb-2 transition-colors duration-300 group-hover:text-white">
-            Qualité & Transparence
-        </h4>
-        <p class="text-gray-600 group-hover:text-white transition-colors duration-300">
+          <h4 class="text-xl font-semibold text-brand-orange mb-2 group-hover:text-white transition-colors">Qualité & Transparence</h4>
+          <p class="text-gray-600 group-hover:text-white transition-colors">
             Des services fiables, des prix justes et une relation de confiance avec nos clients.
-        </p>
+          </p>
         </div>
+      </div>
     </div>
   </section>
+  
 
 <section id="contact" class="py-16 bg-gray-100">
     <div class="container mx-auto px-0 text-center">
