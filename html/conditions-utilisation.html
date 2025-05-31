@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Voyage Ville Diatta Tourisme</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+    AOS.init();
+    </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    /* .hero-bg est potentiellement inutilisé, la section hero utilise .hero-section */
+    .hero-bg {
+      /* Ancien bleu foncé: rgba(30, 58, 138, 0.6) */
+      /* Nouveau brand-blue: #00518c -> rgba(0, 81, 140, 0.6) */
+      background-image: linear-gradient(rgba(0, 81, 140, 0.6), rgba(0, 81, 140, 0.6)), url('/mnt/data/Screenshot 2025-05-08 at 18.25.29.png');
+      background-size: cover;
+      background-position: center;
+    }
+    .wave {
+      position: relative;
+      bottom: -1px;
+    }
+
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+    body {
+        font-family: 'Poppins', sans-serif;
+    }
+    .hero-section {
+        background-image: url('https://images.unsplash.com/photo-1499678329028-101435549a4e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+        background-size: cover;
+        background-position: center;
+        position: relative;
+    }
+    .hero-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        /* Ancien overlay sombre: rgba(17, 24, 39, 0.5) */
+        /* Nouveau avec brand-blue: rgba(0, 81, 140, 0.5) */
+        background: rgba(0, 81, 140, 0.5); /* Utilisation du bleu de la marque pour l'overlay */
+    }
+    .wave-divider {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 50px;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z' opacity='.25' fill='%23FFFFFF'/%3E%3Cpath d='M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z' opacity='.5' fill='%23FFFFFF'/%3E%3Cpath d='M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z' fill='%23FFFFFF'/%3E%3C/svg%3E");
+        background-size: cover;
+    }
+
+    .service-card {
+        transition: all 0.3s ease;
+    }
+
+    .service-card:hover svg {
+        color: white; /* Reste pertinent si le fond devient brand-blue */
+    }
+    
+    /* Masquer tous les slides et ne montrer que le .active */
+    .slide {
+        display: none;
+    }
+    .slide.active {
+        display: block;
+    }
+
+
+    @keyframes riseUp {
+      0% {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-rise-up {
+      animation: riseUp 5s ease-out forwards;
+
+
+        .bar {
+            transition: 0.3s;
+            transform-origin: center;
+        }
+        .open .bar1 {
+            transform: rotate(45deg) translateY(6px);
+        }
+        .open .bar2 {
+            opacity: 0;
+        }
+        .open .bar3 {
+            transform: rotate(-45deg) translateY(-6px);
+        }
+        #mobile-menu {
+            transition: max-height 0.3s ease-out;
+            overflow: hidden;
+            max-height: 0;
+        }
+        #mobile-menu.open {
+            max-height: 500px; /* or enough to show all content */
+        }
+    }
+  </style>
+</head>
+<body class="font-sans text-gray-800 bg-white">
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-white shadow">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+      
+      <!-- Logo -->
+      <div class="flex items-center space-x-4">
+        <img src="../src/images/image.png" alt="Logo" class="h-20 w-auto" />
+      </div>
+  
+      <!-- Hamburger (mobile only) -->
+      <div class="md:hidden">
+        <button id="menu-toggle" class="focus:outline-none">
+          <svg class="w-8 h-8 text-brand-blue" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+  
+      <!-- Navigation (desktop only) -->
+      <nav class="hidden md:flex items-center space-x-6 text-brand-blue font-semibold">
+        <a href="#" class="hover:text-brand-orange transition">Accueil</a>
+        <a href="#apropos" class="hover:text-brand-orange transition">À propos</a>
+        <a href="#services" class="hover:text-brand-orange transition">Services</a>
+        <a href="#contact" class="hover:text-brand-orange transition">Contact</a>
+      </nav>
+  
+      <!-- CTA -->
+      <div class="hidden md:flex items-center space-x-4">
+        <button class="bg-brand-orange hover:bg-brand-orange-dark text-white font-medium py-3 px-6 rounded-full transition duration-300">
+          Contactez-nous
+        </button>
+      </div>
+    </div>
+  
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="md:hidden hidden px-4 pb-4">
+      <nav class="flex flex-col space-y-2 text-brand-blue font-semibold">
+        <a href="#" class="hover:text-brand-orange transition">Accueil</a>
+        <a href="#apropos" class="hover:text-brand-orange transition">À propos</a>
+        <a href="#services" class="hover:text-brand-orange transition">Services</a>
+        <a href="#contact" class="hover:text-brand-orange transition">Contact</a>
+        <button class="mt-2 bg-brand-orange hover:bg-brand-orange-dark text-white font-medium py-2 px-4 rounded-full transition duration-300">
+          Contactez-nous
+        </button>
+      </nav>
+    </div>
+  </header>
+  
+  <script>
+    // Toggle mobile menu
+    document.getElementById("menu-toggle").addEventListener("click", function () {
+      const menu = document.getElementById("mobile-menu");
+      menu.classList.toggle("hidden");
+    });
+  </script>
+  
+  <!DOCTYPE html>
+  <html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Politique de confidentialité - VOYAGE VILLE DIATTA TOURISME</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+      :root {
+        --brand-blue: #0057A0;
+        --brand-orange: #F97316;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50 text-gray-800 font-sans">
+  
+    <!-- Section CGU -->
+  <main class="container mx-auto px-6 max-w-4xl py-10 bg-white rounded-xl">
+    <h2 class="text-3xl font-bold mb-6" style="color: var(--brand-blue);">Conditions Générales d’Utilisation</h2>
+
+    <div class="space-y-6 text-sm leading-relaxed text-gray-700">
+      <p class="text-base text-justify"><strong class="text-gray-900">Dernière mise à jour :</strong> Mai 2025</p>
+
+      <p >Les présentes Conditions Générales d’Utilisation régissent l’accès et l’utilisation du site <strong>VOYAGE VILLE DIATTA TOURISME</strong>.</p>
+
+      <h3 class="text-xl font-semibold" style="color: var(--brand-blue);">1. Acceptation des conditions</h3>
+      <p class="text-base text-justify">En accédant au site, vous acceptez pleinement et sans réserve les présentes CGU.</p>
+
+      <h3 class="text-xl font-semibold" style="color: var(--brand-blue);">2. Services proposés</h3>
+      <p class="text-base text-justify">Le site propose des services liés aux voyages : réservations, assistance, informations touristiques et envoi de colis.</p>
+
+      <h3 class="text-xl font-semibold" style="color: var(--brand-blue);">3. Responsabilités</h3>
+      <p class="text-base text-justify">Nous nous efforçons d'assurer l’exactitude des informations publiées, sans garantie absolue. L’utilisateur est responsable de l’usage qu’il fait du site.</p>
+
+      <h3 class="text-xl font-semibold" style="color: var(--brand-blue);">4. Propriété intellectuelle</h3>
+      <p class="text-base text-justify">Tout le contenu du site (textes, images, logos, etc.) est protégé par les lois sur la propriété intellectuelle. Toute reproduction est interdite sans autorisation.</p>
+
+      <h3 class="text-xl font-semibold" style="color: var(--brand-blue);">5. Liens externes</h3>
+      <p class="text-base text-justify">Le site peut contenir des liens vers des sites tiers. Nous ne sommes pas responsables de leur contenu ou politique de confidentialité.</p>
+
+      <h3 class="text-xl font-semibold" style="color: var(--brand-blue);">6. Données personnelles</h3>
+      <p class="text-base text-justify">Pour connaître notre politique en matière de données personnelles, veuillez consulter notre <a href="politique-confidentialite.html" class="text-brand-orange hover:underline">politique de confidentialité</a>.</p>
+
+      <h3 class="text-xl font-semibold" style="color: var(--brand-blue);">7. Modification des CGU</h3>
+      <p class="text-base text-justify">Nous nous réservons le droit de modifier ces conditions à tout moment. Les utilisateurs sont invités à consulter régulièrement cette page.</p>
+
+      <h3 class="text-xl font-semibold" style="color: var(--brand-blue);">8. Loi applicable</h3>
+      <p class="text-base text-justify">Ces conditions sont soumises au droit sénégalais. Tout litige sera porté devant les tribunaux compétents.</p>
+    </div>
+  </main>
+  
+  
+
+<!-- <footer class="bg-brand-blue text-white pt-12 pb-6"> Remplacé style en ligne par classe Tailwind -->
+    <footer class="text-white pt-12 pb-6" style="background-color: #0057A0 ;">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-5 gap-10">
+          <div class="mb-6 md:mb-0">
+              <img src="../src/images/imagep.png" alt="Logo VOYAGE VILLE DIATTA TOURISME" class="mb-5 w-40 h-auto bg-white p-2 rounded-full shadow-md"/>
+              <div class="flex gap-4 text-xl">
+                  <a href="#" aria-label="Facebook" class="hover:text-brand-orange transition"><i class="fab  "></i></a>
+                  <a href="#" aria-label="Facebook" class="hover:text-brand-orange transition"><i class="fab "></i></a>
+                  <a href="#" aria-label="Facebook" class="hover:text-brand-orange transition"><i class="fab fa-facebook"></i></a>
+                  <a href="#" aria-label="TikTok" class="hover:text-brand-orange transition"><i class="fab fa-tiktok"></i></a>
+                  <a href="#" aria-label="Instagram" class="hover:text-brand-orange transition"><i class="fab fa-instagram"></i></a>
+              </div>
+          </div>
+          <div>
+            <h4 class="text-brand-orange font-bold mb-4">Services</h4>
+            <ul class="space-y-2 text-sm">
+              <li><a href="#services" class="hover:text-brand-orange transition">Billets d'avion</a></li>
+              <li><a href="#services" class="hover:text-brand-orange transition">GP Colis</a></li>
+              <li><a href="#location" class="hover:text-brand-orange transition">Location de Voitures</a></li>
+              <li><a href="#services" class="hover:text-brand-orange transition">Assistance Visa</a></li>
+              <li><a href="#services" class="hover:text-brand-orange transition">Assurance Voyage</a></li>
+              <li><a href="#services" class="hover:text-brand-orange transition">Omra</a></li>
+              
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-brand-orange font-bold mb-4">Destinations</h4>
+            <ul class="space-y-2 text-sm">
+              <li><a href="#" class="hover:text-brand-orange transition">Europe</a></li>
+              <li><a href="#" class="hover:text-brand-orange transition">Asie</a></li>
+              <li><a href="#" class="hover:text-brand-orange transition">Afrique</a></li>
+              <li><a href="#" class="hover:text-brand-orange transition">Amérique du Nord</a></li>
+              <li><a href="#" class="hover:text-brand-orange transition">Amérique du Sud</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-brand-orange font-bold mb-4">Contact</h4>
+            <ul class="space-y-4 text-sm">
+              <li class="flex items-start gap-2">
+                <i class="fas fa-map-marker-alt text-brand-orange mt-1"></i>
+                <span>123 Avenue des Voyages, 75001 Paris</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fas fa-phone-alt text-brand-orange mt-1"></i>
+                <span>+33 1 23 45 67 89</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fas fa-envelope text-brand-orange mt-1"></i>
+                <span>info@voyageexpress.com</span>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="text-brand-orange font-bold mb-4">Liens Utiles</h4>
+            <ul class="space-y-4 text-sm">
+              <li><a href="legalmentions.html" class="hover:text-brand-orange transition">Mentions légales</a></li>
+              <li><a href="politique-confidentialite.html" class="hover:text-brand-orange transition">Politique de confidentialité</a></li>
+              <li><a href="conditions-utilisation.html" class="hover:text-brand-orange transition">Conditions Générales d'utilisation</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="border-t border-white/30 mt-12 pt-6 text-center space-y-2">
+            <p class="text-xs text-white">© <span id="currentYear"></span> VOYAGE VILLE DIATTA TOURISME. Tous droits réservés.</p>
+        </div>
+          
+      </footer>
+  
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+<script>
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+</script>
+<script>
+  tailwind.config = {
+      theme: {
+          extend: {
+              colors: {
+                  // Couleurs de la marque basées sur le logo
+                  'brand-orange': '#f97315',
+                  'brand-orange-dark': '#e08517', // Version plus foncée pour hover
+                  'brand-blue': '#1d40af',
+                  'brand-blue-dark': '#0057A0', // Version plus foncée pour hover
+                  'light-blue':'3c82f6',
+
+                  // Couleurs existantes (à évaluer si elles sont toujours nécessaires)
+                  'light-blue': '#f0f6fa', // Peut-être renommer en brand-blue-lightest
+               
+              },
+              fontFamily: { // Ajout de la police Poppins ici pour la centralisation
+                sans: ['Poppins', 'sans-serif'],
+              },
+              transitionProperty: {
+                  'background': 'background-color',
+              },
+              transitionDuration: {
+                  'slow': '300ms',
+              }
+          }
+      }
+  }
+</script>
+</body>
+</html>
